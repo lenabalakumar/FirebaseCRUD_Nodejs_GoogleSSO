@@ -1,0 +1,25 @@
+{
+  "name": "payilagam",
+  "version": "1.0.0",
+  "description": "Website for learning everything about mobile application development",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "nodemon": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "firebase": "^10.6.0",
+    "firebase-admin": "^11.11.0",
+    "google-auth-library": "^9.2.0",
+    "nodemon": "^3.0.1"
+  }
+}

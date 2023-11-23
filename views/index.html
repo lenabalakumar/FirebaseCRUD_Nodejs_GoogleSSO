@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid bg-primary-subtle p-3">
+        <script src="https://accounts.google.com/gsi/client" async defer></script>
+        <div id="g_id_onload"
+             data-client_id="944380435445-5augser9kth5mo7m9m3kdbjd3bvdfioj.apps.googleusercontent.com"
+             data-callback="handleCredentialResponse">
+        </div>            
+        <div class="g_id_signin" data-type="standard"></div>
+
+        <form action="/auth" method="post">
+            <button>Click me</button>
+        </form>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("Response in browser" + response)
+
+            var xhr = new XMLHttpRequest()
+            xhr.open("POST", '/auth')
+            xhr.setRequestHeader("Content-Type", "application/json")
+            xhr.onload = () => {
+                console.log("Hello onload")
+                console.log("Response from server" + xhr.status)
+                if(xhr.status === 200) {
+                    console.log("Inside success");
+                    window.location.href = "http://localhost:5000/home"
+                }
+            }
+            xhr.send(JSON.stringify({token: response.credential}))
+        }
+    </script>
+</body>
+</html>
